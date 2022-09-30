@@ -44,6 +44,7 @@ class Turnstile implements Rule
             'bad-request' => 'The request was rejected because it was malformed.',
             'timeout-or-duplicate' => 'The response parameter has already been validated before.',
             'internal-error' => 'An internal error happened while validating the response.',
+            default => 'An unexpected error occurred.',
         };
     }
 }
