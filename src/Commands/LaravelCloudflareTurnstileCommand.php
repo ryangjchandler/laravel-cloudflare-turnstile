@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace RyanChandler\LaravelCloudflareTurnstile\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class LaravelCloudflareTurnstileCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'laravel-cloudflare-turnstile';
 
     public $description = 'My command';
 
