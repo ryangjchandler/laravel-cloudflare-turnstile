@@ -2,7 +2,6 @@
 
 namespace RyanChandler\LaravelCloudflareTurnstile\Rules;
 
-use Illuminate\Contracts\Validation\InvokableRule;
 use Illuminate\Contracts\Validation\Rule;
 use RyanChandler\LaravelCloudflareTurnstile\TurnstileClient;
 
@@ -12,7 +11,8 @@ class Turnstile implements Rule
 
     public function __construct(
         protected TurnstileClient $turnstile,
-    ) {}
+    ) {
+    }
 
     public function passes($attribute, $value)
     {

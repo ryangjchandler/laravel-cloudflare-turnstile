@@ -9,7 +9,8 @@ class SiteverifyResponse implements Arrayable
     public function __construct(
         public readonly bool $success,
         public readonly array $errorCodes,
-    ) {}
+    ) {
+    }
 
     public function toArray(): array
     {
