@@ -5,55 +5,100 @@
 [![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/ryangjchandler/laravel-cloudflare-turnstile/Fix%20PHP%20code%20style%20issues?label=code%20style)](https://github.com/ryangjchandler/laravel-cloudflare-turnstile/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/ryangjchandler/laravel-cloudflare-turnstile.svg?style=flat-square)](https://packagist.org/packages/ryangjchandler/laravel-cloudflare-turnstile)
 
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
-
-## Support us
-
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/laravel-cloudflare-turnstile.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/laravel-cloudflare-turnstile)
-
-We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
-
-We highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using. You'll find our address on [our contact page](https://spatie.be/about-us). We publish all received postcards on [our virtual postcard wall](https://spatie.be/open-source/postcards).
+This packages provides helper for setting up and validating Cloudflare Turnstile CAPTCHA responses.
 
 ## Installation
 
-You can install the package via composer:
+You can install the package via Composer:
 
 ```bash
 composer require ryangjchandler/laravel-cloudflare-turnstile
 ```
 
-You can publish and run the migrations with:
-
-```bash
-php artisan vendor:publish --tag="laravel-cloudflare-turnstile-migrations"
-php artisan migrate
-```
-
-You can publish the config file with:
-
-```bash
-php artisan vendor:publish --tag="laravel-cloudflare-turnstile-config"
-```
-
-This is the contents of the published config file:
+You should then add the following configuration values to your `config/services.php` file:
 
 ```php
 return [
+
+    // ...,
+
+    'turnstile' => [
+        'key' => env('TURNSTILE_SITE_KEY'),
+        'secret' => env('TURNSTILE_SECRET_KEY'),
+    ],
+
 ];
 ```
 
-Optionally, you can publish the views using
+Visit Cloudflare to create your site key and secret key and add them to your `.env` file.
 
-```bash
-php artisan vendor:publish --tag="laravel-cloudflare-turnstile-views"
+```
+TURNSTILE_SITE_KEY="1x00000000000000000000AA"
+TURNSTILE_SECRET_KEY="2x0000000000000000000000000000000AA"
 ```
 
 ## Usage
 
+In your layout file, include the Turnstile scripts using the `@turnstileScripts` Blade directive. This should be added to the `<head>` of your document.
+
+```blade
+<html>
+    <head>
+        @turnstileScripts()
+    </head>
+    <body>
+        {{ $slot }}
+    </body>
+</html>
+```
+
+Once that's done, you can use the `@turnstile` directive in `<form>` to output the appropriate markup with your site key configured.
+
+```blade
+<form action="/" method="POST">
+    @turnstile()
+
+    <button>
+        Submit
+    </button>
+</form>
+```
+
+On the server, use the provided validation rule to validate the CAPTCHA response.
+
 ```php
-$laravelCloudflareTurnstile = new RyanChandler\LaravelCloudflareTurnstile();
-echo $laravelCloudflareTurnstile->echoPhrase('Hello, RyanChandler!');
+use Illuminate\Validation\Rule;
+
+public function submit(Request $request)
+{
+    $request->validate([
+        'cf-turnstile-response' => ['required', Rule::turnstile()],
+    ]);
+}
+```
+
+If you prefer to not use a macro, you can resolve an instance of the rule from the container via dependency injection or the `app()` helper.
+
+```php
+use RyanChandler\LaravelCloudflareTurnstile\Rules\Turnstile;
+
+public function submit(Request $request, Turnstile $turnstile)
+{
+    $request->validate([
+        'cf-turnstile-response' => ['required', $turnstile],
+    ]);
+}
+```
+
+```php
+use RyanChandler\LaravelCloudflareTurnstile\Rules\Turnstile;
+
+public function submit(Request $request)
+{
+    $request->validate([
+        'cf-turnstile-response' => ['required', app(Turnstile::class)],
+    ]);
+}
 ```
 
 ## Testing
