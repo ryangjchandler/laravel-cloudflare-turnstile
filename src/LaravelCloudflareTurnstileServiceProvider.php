@@ -31,7 +31,7 @@ class LaravelCloudflareTurnstileServiceProvider extends PackageServiceProvider
         });
 
         Blade::directive('turnstile', function () {
-            return '<div class="cf-turnstile" data-sitekey="'.config('services.turnstile.key').'"></div>';
+            return "<?php echo view('cloudflare-turnstile::turnstileWidget'); ?>";
         });
 
         Rule::macro('turnstile', function () {
