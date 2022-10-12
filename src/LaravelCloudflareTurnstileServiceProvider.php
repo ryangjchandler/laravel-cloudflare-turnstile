@@ -30,7 +30,7 @@ class LaravelCloudflareTurnstileServiceProvider extends PackageServiceProvider
             return '<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>';
         });
 
-        Blade::directive('turnstile', function (array|string $configurations = []) {
+        Blade::directive('turnstile', function (string $configurations) {
             return "<?php echo view('cloudflare-turnstile::turnstileWidget')->with('configurations', $configurations); ?>";
         });
 
