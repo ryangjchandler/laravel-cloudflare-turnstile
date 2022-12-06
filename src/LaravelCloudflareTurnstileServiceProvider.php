@@ -10,6 +10,11 @@ use Spatie\LaravelPackageTools\PackageServiceProvider;
 
 class LaravelCloudflareTurnstileServiceProvider extends PackageServiceProvider
 {
+    public function boot()
+    {
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'turnstile');
+    }
+
     public function configurePackage(Package $package): void
     {
         $package
@@ -30,8 +35,8 @@ class LaravelCloudflareTurnstileServiceProvider extends PackageServiceProvider
             return '<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>';
         });
 
-        Blade::directive('turnstile', function (string $configurations) {
-            return "<?php echo view('cloudflare-turnstile::turnstileWidget')->with('configurations', $configurations); ?>";
+        Blade::directive('turnstile', function () {
+            return '<div class="cf-turnstile" data-sitekey="'.config('services.turnstile.key').'"></div>';
         });
 
         Rule::macro('turnstile', function () {
