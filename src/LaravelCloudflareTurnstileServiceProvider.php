@@ -5,15 +5,16 @@ namespace RyanChandler\LaravelCloudflareTurnstile;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Validation\Rule;
 use RyanChandler\LaravelCloudflareTurnstile\Rules\Turnstile;
+use RyanChandler\LaravelCloudflareTurnstile\View\Components\TurnstileComponent;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
 class LaravelCloudflareTurnstileServiceProvider extends PackageServiceProvider
 {
-//    public function boot()
-//    {
-//        $this->loadViewsFrom(__DIR__.'/../resources/views', 'turnstile');
-//    }
+    public function boot()
+    {
+        Blade::component('turnstile', TurnstileComponent::class);
+    }
 
     public function configurePackage(Package $package): void
     {
