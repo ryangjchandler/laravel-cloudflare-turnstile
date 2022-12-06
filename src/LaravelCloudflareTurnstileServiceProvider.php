@@ -10,10 +10,10 @@ use Spatie\LaravelPackageTools\PackageServiceProvider;
 
 class LaravelCloudflareTurnstileServiceProvider extends PackageServiceProvider
 {
-    public function boot()
-    {
-        $this->loadViewsFrom(__DIR__.'/../resources/views', 'turnstile');
-    }
+//    public function boot()
+//    {
+//        $this->loadViewsFrom(__DIR__.'/../resources/views', 'turnstile');
+//    }
 
     public function configurePackage(Package $package): void
     {
