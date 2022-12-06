@@ -101,6 +101,28 @@ public function submit(Request $request)
 }
 ```
 
+### Customizing the widget
+
+Cloudflare Turnstile accepts a range of configurations values on the widget itself. You can customize that by passing any of those parameters to the `<x-cloudflare-turnstile::render />` component. To learn more about these parameters, read [Cloudflare Docs on Turnstile Client-side Rendering](https://developers.cloudflare.com/turnstile/get-started/client-side-rendering/#configurations).
+
+```blade
+<form action="/" method="POST">
+    <x-cloudflare-turnstile::render
+        data-action="login"
+        data-cdata="sessionid-123456789"
+        data-callback="callback"
+        data-expired-callback="expiredCallback"
+        data-error-callback="errorCallback"
+        data-theme="dark"
+        data-tabindex="1"
+    />
+
+    <button>
+        Submit
+    </button>
+</form>
+```
+
 ## Testing
 
 ```bash
