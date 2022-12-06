@@ -2,6 +2,7 @@
 
 namespace RyanChandler\LaravelCloudflareTurnstile;
 
+use App\View\Components\TurnstileComponent;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Validation\Rule;
 use RyanChandler\LaravelCloudflareTurnstile\Rules\Turnstile;
@@ -10,6 +11,11 @@ use Spatie\LaravelPackageTools\PackageServiceProvider;
 
 class LaravelCloudflareTurnstileServiceProvider extends PackageServiceProvider
 {
+    public function boot()
+    {
+        Blade::component('turnstile', TurnstileComponent::class);
+    }
+
     public function configurePackage(Package $package): void
     {
         $package
