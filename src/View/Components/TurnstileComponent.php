@@ -17,12 +17,20 @@ class TurnstileComponent extends Component
 <div class="cf-turnstile"
      data-sitekey="{{ config('services.turnstile.key') }}"
      @if($attributes->has('wire:model'))
-         data-callback="$wire.set(@js($attributes->wire('model')), value)"
-        {{ $attributes->whereDoesntStartWith('data-callback') }}
+        wire:ignore
+        data-callback="captchaCallback"
+        {{ $attributes->filter(fn ($value, $key) => ! in_array($key, ['data-callback', 'wire:model'])) }}
      @else
          {{ $attributes->whereStartsWith('data-') }}
      @endif
 ></div>
+@if($attributes->has('wire:model'))
+    <script>
+        function captchaCallback(token) {
+            @this.set("{{ $attributes->get('wire:model') }}", token);
+        }
+    </script>
+@endif
 blade;
     }
 }
