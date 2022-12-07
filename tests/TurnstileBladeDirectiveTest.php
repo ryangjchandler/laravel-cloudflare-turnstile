@@ -9,49 +9,55 @@ beforeEach(function () {
 });
 
 it('can render a turnstile widget', function () {
-    $html = Blade::render('<x-cloudflare-turnstile::render />');
+    $html = Blade::render('<x-turnstile />');
 
     assertMatchesHtmlSnapshot($html);
 });
 
 it('can render a turnstile widget with a custom action', function () {
-    $html = Blade::render('<x-cloudflare-turnstile::render data-action="test-action" />');
+    $html = Blade::render('<x-turnstile data-action="test-action" />');
 
     assertMatchesHtmlSnapshot($html);
 });
 
 it('can render a turnstile widget with a custom cdata', function () {
-    $html = Blade::render('<x-cloudflare-turnstile::render data-cdata="test-cdata" />');
+    $html = Blade::render('<x-turnstile data-cdata="test-cdata" />');
 
     assertMatchesHtmlSnapshot($html);
 });
 
 it('can render a turnstile widget with a custom callback', function () {
-    $html = Blade::render('<x-cloudflare-turnstile::render data-callback="testCallback" />');
+    $html = Blade::render('<x-turnstile data-callback="testCallback" />');
 
     assertMatchesHtmlSnapshot($html);
 });
 
 it('can render a turnstile widget with a custom expired callback', function () {
-    $html = Blade::render('<x-cloudflare-turnstile::render data-expired-callback="testExpiredCallback" />');
+    $html = Blade::render('<x-turnstile data-expired-callback="testExpiredCallback" />');
 
     assertMatchesHtmlSnapshot($html);
 });
 
 it('can render a turnstile widget with a custom error callback', function () {
-    $html = Blade::render('<x-cloudflare-turnstile::render data-error-callback="testErrorCallback" />');
+    $html = Blade::render('<x-turnstile data-error-callback="testErrorCallback" />');
 
     assertMatchesHtmlSnapshot($html);
 });
 
 it('can render a turnstile widget with a custom theme', function () {
-    $html = Blade::render('<x-cloudflare-turnstile::render data-theme="dark" />');
+    $html = Blade::render('<x-turnstile data-theme="dark" />');
 
     assertMatchesHtmlSnapshot($html);
 });
 
 it('can render a turnstile widget with a tabindex', function () {
-    $html = Blade::render('<x-cloudflare-turnstile::render data-tabindex="1" />');
+    $html = Blade::render('<x-turnstile data-tabindex="1" />');
+
+    assertMatchesHtmlSnapshot($html);
+});
+
+it('can render a turnstile widget with a wire model', function () {
+    $html = Blade::render('<x-turnstile wire:model="captcha" />');
 
     assertMatchesHtmlSnapshot($html);
 });
