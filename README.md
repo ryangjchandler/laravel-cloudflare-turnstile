@@ -107,7 +107,7 @@ Cloudflare Turnstile accepts a range of configurations values on the widget itse
 
 ```blade
 <form action="/" method="POST">
-    <x-cloudflare-turnstile::render
+    <x-turnstile
         data-action="login"
         data-cdata="sessionid-123456789"
         data-callback="callback"
@@ -121,6 +121,12 @@ Cloudflare Turnstile accepts a range of configurations values on the widget itse
         Submit
     </button>
 </form>
+```
+
+This package can also integrate seamlessly with Laravel Livewire. Upon successful validation, the Livewire model will contain the resulting token.
+
+```blade
+<x-turnstile wire:model="yourModel" />
 ```
 
 ## Testing
