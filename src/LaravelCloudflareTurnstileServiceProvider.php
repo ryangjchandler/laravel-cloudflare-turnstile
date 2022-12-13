@@ -5,17 +5,12 @@ namespace RyanChandler\LaravelCloudflareTurnstile;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Validation\Rule;
 use RyanChandler\LaravelCloudflareTurnstile\Rules\Turnstile;
-use RyanChandler\LaravelCloudflareTurnstile\View\Components\TurnstileComponent;
+use RyanChandler\LaravelCloudflareTurnstile\View\Components\Turnstile as TurnstileComponent;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
 class LaravelCloudflareTurnstileServiceProvider extends PackageServiceProvider
 {
-    public function boot()
-    {
-        Blade::component('turnstile', TurnstileComponent::class);
-    }
-
     public function configurePackage(Package $package): void
     {
         $package
@@ -32,12 +27,10 @@ class LaravelCloudflareTurnstileServiceProvider extends PackageServiceProvider
 
     public function packageBooted()
     {
+        Blade::component('turnstile', TurnstileComponent::class);
+
         Blade::directive('turnstileScripts', function () {
             return '<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>';
-        });
-
-        Blade::directive('turnstile', function () {
-            return '<div class="cf-turnstile" data-sitekey="'.config('services.turnstile.key').'"></div>';
         });
 
         Rule::macro('turnstile', function () {
