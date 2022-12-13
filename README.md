@@ -52,11 +52,11 @@ In your layout file, include the Turnstile scripts using the `@turnstileScripts`
 </html>
 ```
 
-Once that's done, you can use the `@turnstile` directive in `<form>` to output the appropriate markup with your site key configured.
+Once that's done, you can use the `<x-turnstile />` component inside of a `<form>` to output the appropriate markup with your site key configured.
 
 ```blade
 <form action="/" method="POST">
-    @turnstile()
+    <x-turnstile />
 
     <button>
         Submit
@@ -101,6 +101,36 @@ public function submit(Request $request)
 }
 ```
 
+### Customizing the widget
+
+You can customize the widget by passing attributes to the `<x-turnstile />` component.
+
+> To learn more about these parameters, refer to [the offical documentation](https://developers.cloudflare.com/turnstile/get-started/client-side-rendering/#configurations).
+
+```blade
+<form action="/" method="POST">
+    <x-turnstile
+        data-action="login"
+        data-cdata="sessionid-123456789"
+        data-callback="callback"
+        data-expired-callback="expiredCallback"
+        data-error-callback="errorCallback"
+        data-theme="dark"
+        data-tabindex="1"
+    />
+
+    <button>
+        Submit
+    </button>
+</form>
+```
+
+This package can also integrate seamlessly with [Livewire](https://laravel-livewire.com). Upon successful validation, the property specified inside of `wire:model` will be updated with the Turnstile token.
+
+```blade
+<x-turnstile wire:model="yourModel" />
+```
+
 ## Testing
 
 ```bash
@@ -122,7 +152,7 @@ Please review [our security policy](../../security/policy) on how to report secu
 ## Credits
 
 - [Ryan Chandler](https://github.com/ryangjchandler)
-- [All Contributors](../../contributors)
+- [All contributors](../../contributors)
 
 ## License
 
