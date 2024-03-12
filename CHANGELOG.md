@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-cloudflare-turnstile` will be documented in this file.
 
+## v1.1.0 - 2024-03-12
+
+* Add support for Laravel 11.x.
+
 ## v1.0.0 - 2023-04-14
 
 ### What's Changed
