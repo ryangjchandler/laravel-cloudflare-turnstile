@@ -15,6 +15,7 @@ class LaravelCloudflareTurnstileServiceProvider extends PackageServiceProvider
     {
         $package
             ->name('laravel-cloudflare-turnstile')
+            ->hasTranslations()
             ->hasViews();
     }
 
