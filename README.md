@@ -104,8 +104,6 @@ public function submit(Request $request)
 Or simply use the `turnstile` rule directly.
 
 ```php
-use RyanChandler\LaravelCloudflareTurnstile\Rules\Turnstile;
-
 public function submit(Request $request)
 {
     $request->validate([
