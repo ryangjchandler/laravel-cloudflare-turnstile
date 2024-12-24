@@ -3,6 +3,7 @@
 namespace RyanChandler\LaravelCloudflareTurnstile;
 
 use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use RyanChandler\LaravelCloudflareTurnstile\Rules\Turnstile;
 use RyanChandler\LaravelCloudflareTurnstile\View\Components\Turnstile as TurnstileComponent;
@@ -36,5 +37,20 @@ class LaravelCloudflareTurnstileServiceProvider extends PackageServiceProvider
         Rule::macro('turnstile', function () {
             return app(Turnstile::class);
         });
+
+        Validator::extend(
+            'turnstile',
+            function ($attribute, $value, $parameters, $validator) {
+                $rule = app(Turnstile::class);
+                $isPassed = $rule->passes($attribute, $value);
+                if ($isPassed) {
+                    return true;
+                }
+
+                $validator->setCustomMessages([
+                    $attribute => $rule->message()[0],
+                ]);
+            }
+        );
     }
 }

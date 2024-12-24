@@ -101,6 +101,19 @@ public function submit(Request $request)
 }
 ```
 
+Or simply use the `turnstile` rule directly.
+
+```php
+use RyanChandler\LaravelCloudflareTurnstile\Rules\Turnstile;
+
+public function submit(Request $request)
+{
+    $request->validate([
+        'cf-turnstile-response' => ['required', 'turnstile'],
+    ]);
+}
+```
+
 ### Customizing the widget
 
 You can customize the widget by passing attributes to the `<x-turnstile />` component.
