@@ -9,8 +9,7 @@ class TurnstileClient
 {
     public function __construct(
         protected string $secret,
-    ) {
-    }
+    ) {}
 
     public function siteverify(string $response): SiteverifyResponse
     {
