@@ -1,8 +1,8 @@
 # A simple package to help integrate Cloudflare Turnstile.
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/ryangjchandler/laravel-cloudflare-turnstile.svg?style=flat-square)](https://packagist.org/packages/ryangjchandler/laravel-cloudflare-turnstile)
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/ryangjchandler/laravel-cloudflare-turnstile/run-tests?label=tests)](https://github.com/ryangjchandler/laravel-cloudflare-turnstile/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/ryangjchandler/laravel-cloudflare-turnstile/Fix%20PHP%20code%20style%20issues?label=code%20style)](https://github.com/ryangjchandler/laravel-cloudflare-turnstile/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
+[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/ryangjchandler/laravel-cloudflare-turnstile/run-tests.yml?branch=main&style=flat-square&label=tests)](https://github.com/ryangjchandler/laravel-cloudflare-turnstile/actions?query=workflow%3Arun-tests+branch%3Amain)
+[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/ryangjchandler/laravel-cloudflare-turnstile/fix-php-code-style-issues.yml?branch=main&style=flat-square&label=code+style)](https://github.com/ryangjchandler/laravel-cloudflare-turnstile/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/ryangjchandler/laravel-cloudflare-turnstile.svg?style=flat-square)](https://packagist.org/packages/ryangjchandler/laravel-cloudflare-turnstile)
 
 This packages provides helper for setting up and validating Cloudflare Turnstile CAPTCHA responses.
