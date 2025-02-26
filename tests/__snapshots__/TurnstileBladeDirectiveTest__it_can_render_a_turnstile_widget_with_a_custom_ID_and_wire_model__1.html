@@ -1,9 +1,13 @@
 <html><body>
-<div class="cf-turnstile" data-sitekey="1x00000000000000000000AA" wire:ignore data-callback="custom_idCallback"></div>
+<div class="cf-turnstile" data-sitekey="1x00000000000000000000AA" wire:ignore data-callback="custom_idCallback" data-expired-callback="custom_idExpiredCallback" data-timeout-callback="custom_idExpiredCallback"></div>
 
     <script>
         function custom_idCallback(token) {
             @this.set("captcha", token);
+        }
+
+        function custom_idExpiredCallback() {
+            window.turnstile.reset();
         }
     </script>
 </body></html>

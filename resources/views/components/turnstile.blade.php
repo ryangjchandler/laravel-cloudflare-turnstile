@@ -14,7 +14,9 @@ if (! preg_match('/^[a-zA-Z_][a-zA-Z0-9_]*$/', $id)) {
     @if ($attributes->has('wire:model'))
         wire:ignore
         data-callback="{{ $id }}Callback"
-        {{ $attributes->filter(fn($value, $key) => ! in_array($key, ['data-callback', 'wire:model', 'id'])) }}
+        data-expired-callback="{{ $id }}ExpiredCallback"
+        data-timeout-callback="{{ $id }}ExpiredCallback"
+        {{ $attributes->filter(fn($value, $key) => ! in_array($key, ['data-callback', 'data-expired-callback', 'data-timeout-callback', 'wire:model', 'id'])) }}
     @else
         {{ $attributes->whereStartsWith('data-') }}
     @endif
@@ -24,6 +26,10 @@ if (! preg_match('/^[a-zA-Z_][a-zA-Z0-9_]*$/', $id)) {
     <script>
         function {{ $id }}Callback(token) {
             @this.set("{{ $attributes->get('wire:model') }}", token);
+        }
+
+        function {{ $id }}ExpiredCallback() {
+            window.turnstile.reset();
         }
     </script>
 @endif
