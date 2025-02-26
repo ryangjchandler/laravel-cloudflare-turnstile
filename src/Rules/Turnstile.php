@@ -5,6 +5,7 @@ namespace RyanChandler\LaravelCloudflareTurnstile\Rules;
 use Illuminate\Contracts\Validation\Rule;
 use RyanChandler\LaravelCloudflareTurnstile\TurnstileClient;
 
+// @phpstan-ignore class.implementsDeprecatedInterface
 class Turnstile implements Rule
 {
     protected array $messages = [];
