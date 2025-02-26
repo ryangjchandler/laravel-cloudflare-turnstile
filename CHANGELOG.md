@@ -2,6 +2,27 @@
 
 All notable changes to `laravel-cloudflare-turnstile` will be documented in this file.
 
+## v2.0.0 - 2025-02-26
+
+### What's Changed
+
+* Fix workflow run badges by @stevebauman in https://github.com/ryangjchandler/laravel-cloudflare-turnstile/pull/30
+* Localization support by @200-0K in https://github.com/ryangjchandler/laravel-cloudflare-turnstile/pull/34
+* Laravel 12.x Compatibility by @laravel-shift in https://github.com/ryangjchandler/laravel-cloudflare-turnstile/pull/40
+* Allow use more then one turnstile on single page with Livewire. by @Macsimka in https://github.com/ryangjchandler/laravel-cloudflare-turnstile/pull/33
+* Remove support for PHP 8.1 and PHP 8.2.
+* Remove support for Laravel 10.x.
+* Reset Turnstile widget when Livewire property is reset.
+* Prevent widget from expiring with Livewire.
+
+### New Contributors
+
+* @stevebauman made their first contribution in https://github.com/ryangjchandler/laravel-cloudflare-turnstile/pull/30
+* @200-0K made their first contribution in https://github.com/ryangjchandler/laravel-cloudflare-turnstile/pull/34
+* @Macsimka made their first contribution in https://github.com/ryangjchandler/laravel-cloudflare-turnstile/pull/33
+
+**Full Changelog**: https://github.com/ryangjchandler/laravel-cloudflare-turnstile/compare/v1.1.0...v2.0.0
+
 ## v1.1.0 - 2024-03-12
 
 * Add support for Laravel 11.x.
