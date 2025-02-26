@@ -9,5 +9,12 @@
         function custom_idExpiredCallback() {
             window.turnstile.reset();
         }
+
+        @this.watch("captcha", (value, old) => {
+            // If there was a value, and now there isn't, reset the Turnstile.
+            if (!! old && ! value) {
+                window.turnstile.reset();
+            }
+        })
     </script>
 </body></html>
