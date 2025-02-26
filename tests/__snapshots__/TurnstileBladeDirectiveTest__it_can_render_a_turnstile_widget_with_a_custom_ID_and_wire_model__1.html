@@ -1,0 +1,9 @@
+<html><body>
+<div class="cf-turnstile" data-sitekey="1x00000000000000000000AA" wire:ignore data-callback="custom_idCallback"></div>
+
+    <script>
+        function custom_idCallback(token) {
+            @this.set("captcha", token);
+        }
+    </script>
+</body></html>

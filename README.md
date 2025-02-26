@@ -144,6 +144,16 @@ This package can also integrate seamlessly with [Livewire](https://laravel-livew
 <x-turnstile wire:model="yourModel" />
 ```
 
+### Multiple widgets with Livewire
+
+If you're using Livewire and need to have multiple widgets on the page, each widget requires a unique ID.
+
+```blade
+<x-turnstile id="my_widget" wire:model="captcha" />
+```
+
+The `id` property must match this RegEx: `/^[a-zA-Z_][a-zA-Z0-9_]*$/`. IDs that do not match the RegEx will trigger an exception.
+
 ## Testing
 
 ```bash
