@@ -14,7 +14,7 @@ it('can use the rule object for validation', function () {
     $validator = Validator::make([
         'cf-turnstile-response' => TurnstileClient::RESPONSE_DUMMY_TOKEN,
     ], [
-        'cf-turnstile-response' => [app(Turnstile::class)]
+        'cf-turnstile-response' => [app(Turnstile::class)],
     ]);
 
     expect($validator->passes())->toBeTrue();
@@ -29,7 +29,7 @@ it('can use the rule macro for validation', function () {
     $validator = Validator::make([
         'cf-turnstile-response' => TurnstileClient::RESPONSE_DUMMY_TOKEN,
     ], [
-        'cf-turnstile-response' => [Rule::turnstile()]
+        'cf-turnstile-response' => [Rule::turnstile()],
     ]);
 
     expect($validator->passes())->toBeTrue();
@@ -44,7 +44,7 @@ it('can use the turnstile extension rule for validation', function () {
     $validator = Validator::make([
         'cf-turnstile-response' => TurnstileClient::RESPONSE_DUMMY_TOKEN,
     ], [
-        'cf-turnstile-response' => ['turnstile']
+        'cf-turnstile-response' => ['turnstile'],
     ]);
 
     expect($validator->passes())->toBeTrue();

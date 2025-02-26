@@ -11,8 +11,7 @@ class Turnstile implements Rule
 
     public function __construct(
         protected TurnstileClient $turnstile,
-    ) {
-    }
+    ) {}
 
     public function passes($attribute, $value)
     {
