@@ -67,13 +67,13 @@ it('can render a turnstile widget with a wire model', function () {
 it('can render a turnstile widget with a custom ID', function () {
     $html = Blade::render('<x-turnstile id="custom_id" />');
 
-    assertMatchesHtmlSnapshot($html);
+    assertMatchesHtmlSnapshot(trim($html));
 });
 
 it('can render a turnstile widget with a custom ID and wire:model', function () {
     $html = Blade::render('<x-turnstile id="custom_id" wire:model="captcha" />');
 
-    assertMatchesHtmlSnapshot($html);
+    assertMatchesHtmlSnapshot(trim($html));
 });
 
 it('correctly validates invalid turnstile widget IDs', function () {
