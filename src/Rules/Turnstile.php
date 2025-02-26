@@ -11,8 +11,7 @@ class Turnstile implements Rule
 
     public function __construct(
         protected TurnstileClient $turnstile,
-    ) {
-    }
+    ) {}
 
     public function passes($attribute, $value)
     {
@@ -23,7 +22,16 @@ class Turnstile implements Rule
         }
 
         foreach ($response->errorCodes as $errorCode) {
-            $this->messages[] = $this->mapErrorCodeToMessage($errorCode);
+            $this->messages[] = match ($errorCode) {
+                'missing-input-secret' => __('cloudflare-turnstile::errors.missing-input-secret'),
+                'invalid-input-secret' => __('cloudflare-turnstile::errors.invalid-input-secret'),
+                'missing-input-response' => __('cloudflare-turnstile::errors.missing-input-response'),
+                'invalid-input-response' => __('cloudflare-turnstile::errors.invalid-input-response'),
+                'bad-request' => __('cloudflare-turnstile::errors.bad-request'),
+                'timeout-or-duplicate' => __('cloudflare-turnstile::errors.timeout-or-duplicate'),
+                'internal-error' => __('cloudflare-turnstile::errors.internal-error'),
+                default => __('cloudflare-turnstile::errors.unexpected'),
+            };
         }
 
         return false;
@@ -32,19 +40,5 @@ class Turnstile implements Rule
     public function message()
     {
         return $this->messages;
-    }
-
-    protected function mapErrorCodeToMessage(string $code): string
-    {
-        return match ($code) {
-            'missing-input-secret' => 'The secret parameter was not passed.',
-            'invalid-input-secret' => 'The secret parameter was invalid or did not exist.',
-            'missing-input-response' => 'The response parameter was not passed.',
-            'invalid-input-response' => 'The response parameter is invalid or has expired.',
-            'bad-request' => 'The request was rejected because it was malformed.',
-            'timeout-or-duplicate' => 'The response parameter has already been validated before.',
-            'internal-error' => 'An internal error happened while validating the response.',
-            default => 'An unexpected error occurred.',
-        };
     }
 }
