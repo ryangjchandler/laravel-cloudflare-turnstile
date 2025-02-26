@@ -1,5 +1,11 @@
+@props([
+    'id' => 'turnstile',
+])
+
 @php
-    $id = $attributes->get('id', 'turnstile');
+if (! preg_match('/[a-zA-Z_][a-zA-Z0-9_]*/', $id)) {
+    throw new InvalidArgumentException("The Turnstile ID [{$id}] must start start with a letter or underscore, and can only contain alphanumeric or underscore characters.");
+}
 @endphp
 
 <div
