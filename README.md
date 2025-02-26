@@ -77,7 +77,20 @@ public function submit(Request $request)
 }
 ```
 
-If you prefer to not use a macro, you can resolve an instance of the rule from the container via dependency injection or the `app()` helper.
+If you don't want to use the macro, you can use the `turnstile` extension rule instead.
+
+```php
+use Illuminate\Validation\Rule;
+
+public function submit(Request $request)
+{
+    $request->validate([
+        'cf-turnstile-response' => ['required', 'turnstile'],
+    ]);
+}
+```
+
+You can also inject the rule object and pass it to the list of validation rules directly.
 
 ```php
 use RyanChandler\LaravelCloudflareTurnstile\Rules\Turnstile;
