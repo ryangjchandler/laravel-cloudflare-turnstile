@@ -1,9 +1,9 @@
 @props([
-    'id' => 'turnstile',
+    'id' => 'captcha',
 ])
 
 @php
-if (! preg_match('/[a-zA-Z_][a-zA-Z0-9_]*/', $id)) {
+if (! preg_match('/^[a-zA-Z_][a-zA-Z0-9_]*$/', $id)) {
     throw new InvalidArgumentException("The Turnstile ID [{$id}] must start start with a letter or underscore, and can only contain alphanumeric or underscore characters.");
 }
 @endphp

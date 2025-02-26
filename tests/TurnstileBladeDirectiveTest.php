@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Blade;
+use Illuminate\View\ViewException;
 
 use function Spatie\Snapshots\assertMatchesHtmlSnapshot;
 
@@ -61,4 +62,21 @@ it('can render a turnstile widget with a wire model', function () {
     $html = Blade::render('<x-turnstile wire:model="captcha" />');
 
     assertMatchesHtmlSnapshot($html);
+});
+
+it('can render a turnstile widget with a custom ID', function () {
+    $html = Blade::render('<x-turnstile id="custom_id" />');
+
+    assertMatchesHtmlSnapshot($html);
+});
+
+it('can render a turnstile widget with a custom ID and wire:model', function () {
+    $html = Blade::render('<x-turnstile id="custom_id" wire:model="captcha" />');
+
+    assertMatchesHtmlSnapshot($html);
+});
+
+it('correctly validates invalid turnstile widget IDs', function () {
+    expect(fn () => Blade::render('<x-turnstile id="invalid id" />'))
+        ->toThrow(ViewException::class, 'The Turnstile ID [invalid id] must start start with a letter or underscore, and can only contain alphanumeric or underscore characters.');
 });
