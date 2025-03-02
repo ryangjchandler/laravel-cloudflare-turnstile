@@ -2,6 +2,18 @@
 
 All notable changes to `laravel-cloudflare-turnstile` will be documented in this file.
 
+## v2.0.1 - 2025-03-02
+
+### What's Changed
+
+* Add PHP 8.2 back by @ryangjchandler in https://github.com/ryangjchandler/laravel-cloudflare-turnstile/pull/44
+
+### New Contributors
+
+* @ryangjchandler made their first contribution in https://github.com/ryangjchandler/laravel-cloudflare-turnstile/pull/44
+
+**Full Changelog**: https://github.com/ryangjchandler/laravel-cloudflare-turnstile/compare/v2.0.0...v2.0.1
+
 ## v2.0.0 - 2025-02-26
 
 ### What's Changed
