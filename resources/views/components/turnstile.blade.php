@@ -25,7 +25,7 @@ $model = $attributes->has('wire:model') ? $attributes->get('wire:model') : null;
 ></div>
 
 @if ($model)
-    <script>
+    <script @if(app('csp-nonce')) @cspNonce @endif>
         function {{ $id }}Callback(token) {
             @this.set("{{ $model }}", token);
         }
