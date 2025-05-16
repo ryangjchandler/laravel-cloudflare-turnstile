@@ -2,6 +2,18 @@
 
 All notable changes to `laravel-cloudflare-turnstile` will be documented in this file.
 
+## v2.0.2 - 2025-05-16
+
+### What's Changed
+
+* Fix: Wait for Livewire initialization by @soymgomez in https://github.com/ryangjchandler/laravel-cloudflare-turnstile/pull/50
+
+### New Contributors
+
+* @soymgomez made their first contribution in https://github.com/ryangjchandler/laravel-cloudflare-turnstile/pull/50
+
+**Full Changelog**: https://github.com/ryangjchandler/laravel-cloudflare-turnstile/compare/v2.0.1...v2.0.2
+
 ## v2.0.1 - 2025-03-02
 
 ### What's Changed
