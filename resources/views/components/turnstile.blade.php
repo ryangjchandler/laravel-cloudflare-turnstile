@@ -26,19 +26,22 @@ $model = $attributes->has('wire:model') ? $attributes->get('wire:model') : null;
 
 @if ($model)
     <script>
-        function {{ $id }}Callback(token) {
-            @this.set("{{ $model }}", token);
-        }
+        document.addEventListener('livewire:initialized', () => {
+            function {{ $id }}Callback(token) {
+                @this.set("{{ $model }}", token);
+            }
 
-        function {{ $id }}ExpiredCallback() {
-            window.turnstile.reset();
-        }
-
-        @this.watch("{{ $model }}", (value, old) => {
-            // If there was a value, and now there isn't, reset the Turnstile.
-            if (!! old && ! value) {
+            function {{ $id }}ExpiredCallback() {
                 window.turnstile.reset();
             }
-        })
+
+
+            @this.watch("{{ $model }}", (value, old) => {
+                // If there was a value, and now there isn't, reset the Turnstile.
+                if (!!old && !value) {
+                    window.turnstile.reset();
+                }
+            })
+        });
     </script>
 @endif
