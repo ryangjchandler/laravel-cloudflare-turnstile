@@ -2,19 +2,22 @@
 <div class="cf-turnstile" data-sitekey="1x00000000000000000000AA" wire:ignore data-callback="captchaCallback" data-expired-callback="captchaExpiredCallback" data-timeout-callback="captchaExpiredCallback"></div>
 
     <script>
-        function captchaCallback(token) {
-            @this.set("captcha", token);
-        }
+        document.addEventListener('livewire:initialized', () => {
+            function captchaCallback(token) {
+                @this.set("captcha", token);
+            }
 
-        function captchaExpiredCallback() {
-            window.turnstile.reset();
-        }
-
-        @this.watch("captcha", (value, old) => {
-            // If there was a value, and now there isn't, reset the Turnstile.
-            if (!! old && ! value) {
+            function captchaExpiredCallback() {
                 window.turnstile.reset();
             }
-        })
+
+
+            @this.watch("captcha", (value, old) => {
+                // If there was a value, and now there isn't, reset the Turnstile.
+                if (!!old && !value) {
+                    window.turnstile.reset();
+                }
+            })
+        });
     </script>
 </body></html>
