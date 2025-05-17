@@ -27,11 +27,11 @@ $model = $attributes->has('wire:model') ? $attributes->get('wire:model') : null;
 @if ($model)
     <script>
         document.addEventListener('livewire:initialized', () => {
-            function {{ $id }}Callback(token) {
+            window.{{ $id }}Callback = function (token) {
                 @this.set("{{ $model }}", token);
             }
 
-            function {{ $id }}ExpiredCallback() {
+            window.{{ $id }}ExpiredCallback = function () {
                 window.turnstile.reset();
             }
 
