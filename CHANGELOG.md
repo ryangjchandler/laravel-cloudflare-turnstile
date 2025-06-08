@@ -2,6 +2,18 @@
 
 All notable changes to `laravel-cloudflare-turnstile` will be documented in this file.
 
+## v2.0.3 - 2025-06-08
+
+### What's Changed
+
+* Javascript callback function declarations changed by @AndrasMa in https://github.com/ryangjchandler/laravel-cloudflare-turnstile/pull/51
+
+### New Contributors
+
+* @AndrasMa made their first contribution in https://github.com/ryangjchandler/laravel-cloudflare-turnstile/pull/51
+
+**Full Changelog**: https://github.com/ryangjchandler/laravel-cloudflare-turnstile/compare/v2.0.2...v2.0.3
+
 ## v2.0.2 - 2025-05-16
 
 ### What's Changed
