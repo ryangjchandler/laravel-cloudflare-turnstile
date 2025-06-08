@@ -35,7 +35,6 @@ $model = $attributes->has('wire:model') ? $attributes->get('wire:model') : null;
                 window.turnstile.reset();
             }
 
-
             @this.watch("{{ $model }}", (value, old) => {
                 // If there was a value, and now there isn't, reset the Turnstile.
                 if (!!old && !value) {

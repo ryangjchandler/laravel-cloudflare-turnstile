@@ -3,14 +3,13 @@
 
     <script>
         document.addEventListener('livewire:initialized', () => {
-            function custom_idCallback(token) {
+            window.custom_idCallback = function (token) {
                 @this.set("captcha", token);
             }
 
-            function custom_idExpiredCallback() {
+            window.custom_idExpiredCallback = function () {
                 window.turnstile.reset();
             }
-
 
             @this.watch("captcha", (value, old) => {
                 // If there was a value, and now there isn't, reset the Turnstile.
