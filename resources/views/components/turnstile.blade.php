@@ -11,16 +11,15 @@ $model = $attributes->has('wire:model') ? $attributes->get('wire:model') : null;
 @endphp
 
 <div
-    class="cf-turnstile"
     data-sitekey="{{ config('services.turnstile.key') }}"
     @if ($model)
         wire:ignore
         data-callback="{{ $id }}Callback"
         data-expired-callback="{{ $id }}ExpiredCallback"
         data-timeout-callback="{{ $id }}ExpiredCallback"
-        {{ $attributes->filter(fn($value, $key) => ! in_array($key, ['data-callback', 'data-expired-callback', 'data-timeout-callback', 'wire:model', 'id'])) }}
+        {{ $attributes->filter(fn($value, $key) => ! in_array($key, ['data-callback', 'data-expired-callback', 'data-timeout-callback', 'wire:model', 'id']))->class(['cf-turnstile']) }}
     @else
-        {{ $attributes->whereStartsWith('data-') }}
+        {{ $attributes->class(['cf-turnstile']) }}
     @endif
 ></div>
 
