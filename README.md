@@ -138,7 +138,7 @@ You can customize the widget by passing attributes to the `<x-turnstile />` comp
 </form>
 ```
 
-This package can also integrate seamlessly with [Livewire](https://laravel-livewire.com). Upon successful validation, the property specified inside of `wire:model` will be updated with the Turnstile token.
+This package can also integrate seamlessly with [Livewire](https://livewire.laravel.com). Upon successful validation, the property specified inside of `wire:model` will be updated with the Turnstile token.
 
 ```blade
 <x-turnstile wire:model="yourModel" />
