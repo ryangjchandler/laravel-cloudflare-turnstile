@@ -32,33 +32,11 @@ class LaravelCloudflareTurnstileServiceProvider extends PackageServiceProvider
     public function packageBooted(): void
     {
         $this->bootBlade();
-        $this->bootValidation();
     }
 
     private function bootBlade(): void
     {
         Blade::component('turnstile.scripts', Scripts::class);
         Blade::component('turnstile', TurnstileComponent::class);
-    }
-
-    private function bootValidation(): void
-    {
-        Rule::macro('turnstile', function () {
-            return app(Turnstile::class);
-        });
-
-        Validator::extend('turnstile', function (string $attribute, mixed $value, array $parameters, ConcreteValidator $validator) {
-            $rule = $this->app->make(Turnstile::class);
-
-            if ($rule->passes($attribute, $value)) {
-                return true;
-            }
-
-            $validator->setCustomMessages([
-                $attribute => $rule->message(),
-            ]);
-
-            return false;
-        });
     }
 }

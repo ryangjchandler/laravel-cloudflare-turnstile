@@ -12,3 +12,35 @@ The `@turnstileScripts` directive has been removed from the package and replaced
 ```
 
 This syntax is now inline with the Turnstile component itself and improves the consistency of the package.
+
+## `turnstile` rule removed
+
+The `turnstile` stringified validation rule provided this package has now been removed in favor of the `Turnstile` rule object.
+
+```php
+use RyanChandler\LaravelCloudflareTurnstile\Rules\Turnstile;
+
+$request->validate([
+    'cf-turnstile-response' => [
+        'required',
+-       'turnstile',
++       new Turnstile, 
+    ]
+]);
+```
+
+## `Rule::turnstile()` macro removed
+
+The `Rule::turnstile()` macro provided this package has now been removed in favor of the `Turnstile` rule object.
+
+```php
+use RyanChandler\LaravelCloudflareTurnstile\Rules\Turnstile;
+
+$request->validate([
+    'cf-turnstile-response' => [
+        'required',
+-       Rule::turnstile(),
++       new Turnstile, 
+    ]
+]);
+```
