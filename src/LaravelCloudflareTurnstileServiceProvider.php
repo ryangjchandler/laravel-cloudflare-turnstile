@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Validator as ConcreteValidator;
 use RyanChandler\LaravelCloudflareTurnstile\Rules\Turnstile;
+use RyanChandler\LaravelCloudflareTurnstile\View\Components\Scripts;
 use RyanChandler\LaravelCloudflareTurnstile\View\Components\Turnstile as TurnstileComponent;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
@@ -36,6 +37,7 @@ class LaravelCloudflareTurnstileServiceProvider extends PackageServiceProvider
 
     private function bootBlade(): void
     {
+        Blade::component('turnstile.scripts', Scripts::class);
         Blade::component('turnstile', TurnstileComponent::class);
 
         Blade::directive('turnstileScripts', function () {
