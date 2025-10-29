@@ -6,7 +6,7 @@ This document contains notable breaking changes and the steps required to succes
 
 The `@turnstileScripts` directive has been removed from the package and replaced with a Blade component instead.
 
-```blade
+```diff
 - @turnstileScripts
 + <x-turnstile.scripts />
 ```
@@ -17,7 +17,7 @@ This syntax is now inline with the Turnstile component itself and improves the c
 
 The `turnstile` stringified validation rule provided this package has now been removed in favor of the `Turnstile` rule object.
 
-```php
+```diff
 use RyanChandler\LaravelCloudflareTurnstile\Rules\Turnstile;
 
 $request->validate([
@@ -33,7 +33,7 @@ $request->validate([
 
 The `Rule::turnstile()` macro provided this package has now been removed in favor of the `Turnstile` rule object.
 
-```php
+```diff
 use RyanChandler\LaravelCloudflareTurnstile\Rules\Turnstile;
 
 $request->validate([
