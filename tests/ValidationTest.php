@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Validator;
-use RyanChandler\LaravelCloudflareTurnstile\Rules\Turnstile;
 use RyanChandler\LaravelCloudflareTurnstile\Client;
+use RyanChandler\LaravelCloudflareTurnstile\Rules\Turnstile;
 
 it('can use the rule object for validation', function () {
     config()->set('services.turnstile', [
