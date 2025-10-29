@@ -1,9 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Validator;
-use RyanChandler\LaravelCloudflareTurnstile\Client;
-use RyanChandler\LaravelCloudflareTurnstile\Rules\Turnstile;
 use RyanChandler\LaravelCloudflareTurnstile\Facades\Turnstile as Facade;
+use RyanChandler\LaravelCloudflareTurnstile\Rules\Turnstile;
 
 it('can use the rule object for validation', function () {
     Facade::fake();
