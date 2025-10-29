@@ -3,15 +3,13 @@
 use Illuminate\Support\Facades\Validator;
 use RyanChandler\LaravelCloudflareTurnstile\Client;
 use RyanChandler\LaravelCloudflareTurnstile\Rules\Turnstile;
+use RyanChandler\LaravelCloudflareTurnstile\Facades\Turnstile as Facade;
 
 it('can use the rule object for validation', function () {
-    config()->set('services.turnstile', [
-        'key' => Client::SITEKEY_ALWAYS_PASSES_VISIBLE,
-        'secret' => Client::SECRET_KEY_ALWAYS_PASSES,
-    ]);
+    Facade::fake();
 
     $validator = Validator::make([
-        'cf-turnstile-response' => Client::RESPONSE_DUMMY_TOKEN,
+        'cf-turnstile-response' => Facade::dummy(),
     ], [
         'cf-turnstile-response' => [app(Turnstile::class)],
     ]);
@@ -20,13 +18,10 @@ it('can use the rule object for validation', function () {
 });
 
 it('fails validation with an invalid token', function () {
-    config()->set('services.turnstile', [
-        'key' => Client::SITEKEY_ALWAYS_PASSES_VISIBLE,
-        'secret' => Client::SECRET_KEY_ALWAYS_FAILS,
-    ]);
+    Facade::fake()->fail();
 
     $validator = Validator::make([
-        'cf-turnstile-response' => Client::RESPONSE_DUMMY_TOKEN,
+        'cf-turnstile-response' => Facade::dummy(),
     ], [
         'cf-turnstile-response' => [app(Turnstile::class)],
     ]);

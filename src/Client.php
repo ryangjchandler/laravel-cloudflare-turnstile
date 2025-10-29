@@ -46,4 +46,9 @@ class Client implements ClientInterface
 
         return SiteverifyResponse::failure($response->json('error-codes'));
     }
+
+    public function dummy(): string
+    {
+        return self::RESPONSE_DUMMY_TOKEN;
+    }
 }

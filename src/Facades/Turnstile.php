@@ -6,6 +6,9 @@ use Illuminate\Support\Facades\Facade;
 use RyanChandler\LaravelCloudflareTurnstile\Contracts\ClientInterface;
 use RyanChandler\LaravelCloudflareTurnstile\Testing\FakeClient;
 
+/**
+ * @method static string dummy()
+ */
 class Turnstile extends Facade
 {
     protected static function getFacadeAccessor(): string
