@@ -44,3 +44,12 @@ $request->validate([
     ]
 ]);
 ```
+
+## `TurnstileClient` class renamed
+
+`TurnstileClient` has been renamed to just `Client`.
+
+```diff
+- use RyanChandler\LaravelCloudflareTurnstile\TurnstileClient;
++ use RyanChandler\LaravelCloudflareTurnstile\Client;
+```

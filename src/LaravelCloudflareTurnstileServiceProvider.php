@@ -20,8 +20,8 @@ class LaravelCloudflareTurnstileServiceProvider extends PackageServiceProvider
 
     public function packageRegistered(): void
     {
-        $this->app->singleton(TurnstileClient::class, function ($app) {
-            return new TurnstileClient($app['config']->get('services.turnstile.secret'));
+        $this->app->singleton(Client::class, function ($app) {
+            return new Client($app['config']->get('services.turnstile.secret'));
         });
     }
 

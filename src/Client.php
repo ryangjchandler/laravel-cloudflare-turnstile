@@ -5,7 +5,7 @@ namespace RyanChandler\LaravelCloudflareTurnstile;
 use Illuminate\Support\Facades\Http;
 use RyanChandler\LaravelCloudflareTurnstile\Responses\SiteverifyResponse;
 
-class TurnstileClient
+class Client
 {
     const SITEKEY_ALWAYS_PASSES_VISIBLE = '1x00000000000000000000AA';
 

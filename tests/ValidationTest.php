@@ -2,16 +2,16 @@
 
 use Illuminate\Support\Facades\Validator;
 use RyanChandler\LaravelCloudflareTurnstile\Rules\Turnstile;
-use RyanChandler\LaravelCloudflareTurnstile\TurnstileClient;
+use RyanChandler\LaravelCloudflareTurnstile\Client;
 
 it('can use the rule object for validation', function () {
     config()->set('services.turnstile', [
-        'key' => TurnstileClient::SITEKEY_ALWAYS_PASSES_VISIBLE,
-        'secret' => TurnstileClient::SECRET_KEY_ALWAYS_PASSES,
+        'key' => Client::SITEKEY_ALWAYS_PASSES_VISIBLE,
+        'secret' => Client::SECRET_KEY_ALWAYS_PASSES,
     ]);
 
     $validator = Validator::make([
-        'cf-turnstile-response' => TurnstileClient::RESPONSE_DUMMY_TOKEN,
+        'cf-turnstile-response' => Client::RESPONSE_DUMMY_TOKEN,
     ], [
         'cf-turnstile-response' => [app(Turnstile::class)],
     ]);

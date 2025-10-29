@@ -3,7 +3,7 @@
 namespace RyanChandler\LaravelCloudflareTurnstile\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
-use RyanChandler\LaravelCloudflareTurnstile\TurnstileClient;
+use RyanChandler\LaravelCloudflareTurnstile\Client;
 
 // @phpstan-ignore class.implementsDeprecatedInterface
 class Turnstile implements Rule
@@ -11,7 +11,7 @@ class Turnstile implements Rule
     protected array $messages = [];
 
     public function __construct(
-        protected TurnstileClient $turnstile,
+        protected Client $turnstile,
     ) {}
 
     public function passes($attribute, $value)
