@@ -39,10 +39,6 @@ class LaravelCloudflareTurnstileServiceProvider extends PackageServiceProvider
     {
         Blade::component('turnstile.scripts', Scripts::class);
         Blade::component('turnstile', TurnstileComponent::class);
-
-        Blade::directive('turnstileScripts', function () {
-            return '<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>';
-        });
     }
 
     private function bootValidation(): void
