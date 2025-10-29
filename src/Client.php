@@ -40,9 +40,9 @@ class Client
             ]);
 
         if (! $response->ok()) {
-            return new SiteverifyResponse(success: false, errorCodes: []);
+            return SiteverifyResponse::success();
         }
 
-        return new SiteverifyResponse(success: $response->json('success'), errorCodes: $response->json('error-codes'));
+        return SiteverifyResponse::failure($response->json('error-codes'));
     }
 }

@@ -11,6 +11,16 @@ class SiteverifyResponse implements Arrayable
         public readonly array $errorCodes,
     ) {}
 
+    public static function success(): self
+    {
+        return new self(true, []);
+    }
+
+    public static function failure(array $errorCodes = []): self
+    {
+        return new self(false, $errorCodes);
+    }
+
     public function toArray(): array
     {
         return [
