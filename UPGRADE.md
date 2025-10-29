@@ -53,3 +53,11 @@ $request->validate([
 - use RyanChandler\LaravelCloudflareTurnstile\TurnstileClient;
 + use RyanChandler\LaravelCloudflareTurnstile\Client;
 ```
+
+## `Client` is now a scoped singleton
+
+The `Client` was previously registered as a singleton, but to ensure compatibility with Octane and other single-boot lifecycles, the `Client` is now a scoped singleton.
+
+This shouldn't have a huge impact on userland code, but if you're interacting with this manually there could be breaking changes in behaviour.
+
+Be sure to thoroughly test your application code to find breaking changes.
