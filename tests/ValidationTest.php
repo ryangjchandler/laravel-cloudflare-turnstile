@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\Rule;
 use RyanChandler\LaravelCloudflareTurnstile\Rules\Turnstile;
 use RyanChandler\LaravelCloudflareTurnstile\TurnstileClient;
 
