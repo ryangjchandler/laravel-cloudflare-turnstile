@@ -2,6 +2,20 @@
 
 All notable changes to `laravel-cloudflare-turnstile` will be documented in this file.
 
+## v2.1.0 - 2025-10-29
+
+### What's Changed
+
+* Update livewire website url by @Erulezz in https://github.com/ryangjchandler/laravel-cloudflare-turnstile/pull/54
+* Allow any custom attributes on the turnstile div by @tobz-nz in https://github.com/ryangjchandler/laravel-cloudflare-turnstile/pull/52
+
+### New Contributors
+
+* @Erulezz made their first contribution in https://github.com/ryangjchandler/laravel-cloudflare-turnstile/pull/54
+* @tobz-nz made their first contribution in https://github.com/ryangjchandler/laravel-cloudflare-turnstile/pull/52
+
+**Full Changelog**: https://github.com/ryangjchandler/laravel-cloudflare-turnstile/compare/v2.0.3...v2.1.0
+
 ## v2.0.3 - 2025-06-08
 
 ### What's Changed
