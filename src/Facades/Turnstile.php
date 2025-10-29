@@ -3,7 +3,6 @@
 namespace RyanChandler\LaravelCloudflareTurnstile\Facades;
 
 use Illuminate\Support\Facades\Facade;
-use RyanChandler\LaravelCloudflareTurnstile\Client;
 use RyanChandler\LaravelCloudflareTurnstile\Contracts\ClientInterface;
 use RyanChandler\LaravelCloudflareTurnstile\Testing\FakeClient;
 
