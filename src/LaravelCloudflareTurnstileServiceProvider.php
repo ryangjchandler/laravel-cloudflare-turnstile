@@ -4,6 +4,7 @@ namespace RyanChandler\LaravelCloudflareTurnstile;
 
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\Facades\Blade;
+use RyanChandler\LaravelCloudflareTurnstile\Contracts\ClientInterface;
 use RyanChandler\LaravelCloudflareTurnstile\View\Components\Scripts;
 use RyanChandler\LaravelCloudflareTurnstile\View\Components\Turnstile as TurnstileComponent;
 use Spatie\LaravelPackageTools\Package;
@@ -21,7 +22,7 @@ class LaravelCloudflareTurnstileServiceProvider extends PackageServiceProvider
 
     public function packageRegistered(): void
     {
-        $this->app->scoped(Client::class, static function (Application $app): Client {
+        $this->app->scoped(ClientInterface::class, static function (Application $app): Client {
             return new Client($app['config']->get('services.turnstile.secret'));
         });
     }

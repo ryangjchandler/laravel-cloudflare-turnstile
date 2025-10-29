@@ -4,19 +4,19 @@ namespace RyanChandler\LaravelCloudflareTurnstile\Rules;
 
 use Closure;
 use Illuminate\Contracts\Validation\ValidationRule;
-use RyanChandler\LaravelCloudflareTurnstile\Client;
+use RyanChandler\LaravelCloudflareTurnstile\Contracts\ClientInterface;
 
 class Turnstile implements ValidationRule
 {
     protected array $messages = [];
 
     public function __construct(
-        protected Client $turnstile,
+        protected ClientInterface $client,
     ) {}
 
     public function validate(string $attribute, mixed $value, Closure $fail): void
     {
-        $response = $this->turnstile->siteverify($value);
+        $response = $this->client->siteverify($value);
 
         if ($response->success) {
             return;
