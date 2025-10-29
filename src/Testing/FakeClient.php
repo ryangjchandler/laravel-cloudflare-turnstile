@@ -3,7 +3,6 @@
 namespace RyanChandler\LaravelCloudflareTurnstile\Testing;
 
 use Illuminate\Support\Testing\Fakes\Fake;
-use RyanChandler\LaravelCloudflareTurnstile\Client;
 use RyanChandler\LaravelCloudflareTurnstile\Contracts\ClientInterface;
 use RyanChandler\LaravelCloudflareTurnstile\Responses\SiteverifyResponse;
 
@@ -49,6 +48,6 @@ class FakeClient implements ClientInterface, Fake
 
     public function dummy(): string
     {
-        return Client::RESPONSE_DUMMY_TOKEN;
+        return self::RESPONSE_DUMMY_TOKEN;
     }
 }
