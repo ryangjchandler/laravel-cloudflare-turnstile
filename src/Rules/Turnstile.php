@@ -2,28 +2,24 @@
 
 namespace RyanChandler\LaravelCloudflareTurnstile\Rules;
 
-use Illuminate\Contracts\Validation\Rule;
-use RyanChandler\LaravelCloudflareTurnstile\TurnstileClient;
+use Closure;
+use Illuminate\Contracts\Validation\ValidationRule;
+use RyanChandler\LaravelCloudflareTurnstile\Facades\Turnstile as Facade;
 
-// @phpstan-ignore class.implementsDeprecatedInterface
-class Turnstile implements Rule
+class Turnstile implements ValidationRule
 {
     protected array $messages = [];
 
-    public function __construct(
-        protected TurnstileClient $turnstile,
-    ) {}
-
-    public function passes($attribute, $value)
+    public function validate(string $attribute, mixed $value, Closure $fail): void
     {
-        $response = $this->turnstile->siteverify($value);
+        $response = Facade::siteverify($value);
 
         if ($response->success) {
-            return true;
+            return;
         }
 
         foreach ($response->errorCodes as $errorCode) {
-            $this->messages[] = match ($errorCode) {
+            $fail(match ($errorCode) {
                 'missing-input-secret' => __('cloudflare-turnstile::errors.missing-input-secret'),
                 'invalid-input-secret' => __('cloudflare-turnstile::errors.invalid-input-secret'),
                 'missing-input-response' => __('cloudflare-turnstile::errors.missing-input-response'),
@@ -32,14 +28,7 @@ class Turnstile implements Rule
                 'timeout-or-duplicate' => __('cloudflare-turnstile::errors.timeout-or-duplicate'),
                 'internal-error' => __('cloudflare-turnstile::errors.internal-error'),
                 default => __('cloudflare-turnstile::errors.unexpected'),
-            };
+            });
         }
-
-        return false;
-    }
-
-    public function message()
-    {
-        return $this->messages;
     }
 }

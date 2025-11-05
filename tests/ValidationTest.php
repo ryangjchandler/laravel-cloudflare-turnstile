@@ -1,18 +1,14 @@
 <?php
 
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\Rule;
+use RyanChandler\LaravelCloudflareTurnstile\Facades\Turnstile as Facade;
 use RyanChandler\LaravelCloudflareTurnstile\Rules\Turnstile;
-use RyanChandler\LaravelCloudflareTurnstile\TurnstileClient;
 
 it('can use the rule object for validation', function () {
-    config()->set('services.turnstile', [
-        'key' => TurnstileClient::SITEKEY_ALWAYS_PASSES_VISIBLE,
-        'secret' => TurnstileClient::SECRET_KEY_ALWAYS_PASSES,
-    ]);
+    Facade::fake();
 
     $validator = Validator::make([
-        'cf-turnstile-response' => TurnstileClient::RESPONSE_DUMMY_TOKEN,
+        'cf-turnstile-response' => Facade::dummy(),
     ], [
         'cf-turnstile-response' => [app(Turnstile::class)],
     ]);
@@ -20,32 +16,14 @@ it('can use the rule object for validation', function () {
     expect($validator->passes())->toBeTrue();
 });
 
-it('can use the rule macro for validation', function () {
-    config()->set('services.turnstile', [
-        'key' => TurnstileClient::SITEKEY_ALWAYS_PASSES_VISIBLE,
-        'secret' => TurnstileClient::SECRET_KEY_ALWAYS_PASSES,
-    ]);
+it('fails validation with an invalid token', function () {
+    Facade::fake()->fail();
 
     $validator = Validator::make([
-        'cf-turnstile-response' => TurnstileClient::RESPONSE_DUMMY_TOKEN,
+        'cf-turnstile-response' => Facade::dummy(),
     ], [
-        'cf-turnstile-response' => [Rule::turnstile()],
+        'cf-turnstile-response' => [app(Turnstile::class)],
     ]);
 
-    expect($validator->passes())->toBeTrue();
-});
-
-it('can use the turnstile extension rule for validation', function () {
-    config()->set('services.turnstile', [
-        'key' => TurnstileClient::SITEKEY_ALWAYS_PASSES_VISIBLE,
-        'secret' => TurnstileClient::SECRET_KEY_ALWAYS_PASSES,
-    ]);
-
-    $validator = Validator::make([
-        'cf-turnstile-response' => TurnstileClient::RESPONSE_DUMMY_TOKEN,
-    ], [
-        'cf-turnstile-response' => ['turnstile'],
-    ]);
-
-    expect($validator->passes())->toBeTrue();
+    expect($validator->fails())->toBeTrue();
 });

@@ -5,7 +5,7 @@
 [![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/ryangjchandler/laravel-cloudflare-turnstile/fix-php-code-style-issues.yml?branch=main&style=flat-square&label=code+style)](https://github.com/ryangjchandler/laravel-cloudflare-turnstile/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/ryangjchandler/laravel-cloudflare-turnstile.svg?style=flat-square)](https://packagist.org/packages/ryangjchandler/laravel-cloudflare-turnstile)
 
-This packages provides helper for setting up and validating Cloudflare Turnstile CAPTCHA responses.
+This packages provides an API integrating Laravel with [Cloudflare's Turnstile](https://www.cloudflare.com/en-gb/application-services/products/turnstile/) product.
 
 ## Installation
 
@@ -30,7 +30,7 @@ return [
 ];
 ```
 
-Visit Cloudflare to create your site key and secret key and add them to your `.env` file.
+Create your Turnstile keys through Cloudflare and add them to your `.env` file.
 
 ```
 TURNSTILE_SITE_KEY="1x00000000000000000000AA"
@@ -39,12 +39,12 @@ TURNSTILE_SECRET_KEY="2x0000000000000000000000000000000AA"
 
 ## Usage
 
-In your layout file, include the Turnstile scripts using the `@turnstileScripts` Blade directive. This should be added to the `<head>` of your document.
+In your layout file, include the Turnstile scripts using the `<x-turnstile.scripts>` component. This should be added to the `<head>` of your document.
 
 ```blade
 <html>
     <head>
-        @turnstileScripts()
+        <x-turnstile.scripts />
     </head>
     <body>
         {{ $slot }}
@@ -64,52 +64,16 @@ Once that's done, you can use the `<x-turnstile />` component inside of a `<form
 </form>
 ```
 
-On the server, use the provided validation rule to validate the CAPTCHA response.
+To validate the Turnstile response, use the `Turnstile` rule when validating your request.
 
 ```php
 use Illuminate\Validation\Rule;
-
-public function submit(Request $request)
-{
-    $request->validate([
-        'cf-turnstile-response' => ['required', Rule::turnstile()],
-    ]);
-}
-```
-
-If you don't want to use the macro, you can use the `turnstile` extension rule instead.
-
-```php
-use Illuminate\Validation\Rule;
-
-public function submit(Request $request)
-{
-    $request->validate([
-        'cf-turnstile-response' => ['required', 'turnstile'],
-    ]);
-}
-```
-
-You can also inject the rule object and pass it to the list of validation rules directly.
-
-```php
-use RyanChandler\LaravelCloudflareTurnstile\Rules\Turnstile;
-
-public function submit(Request $request, Turnstile $turnstile)
-{
-    $request->validate([
-        'cf-turnstile-response' => ['required', $turnstile],
-    ]);
-}
-```
-
-```php
 use RyanChandler\LaravelCloudflareTurnstile\Rules\Turnstile;
 
 public function submit(Request $request)
 {
     $request->validate([
-        'cf-turnstile-response' => ['required', app(Turnstile::class)],
+        'cf-turnstile-response' => ['required', new Turnstile],
     ]);
 }
 ```
@@ -138,21 +102,25 @@ You can customize the widget by passing attributes to the `<x-turnstile />` comp
 </form>
 ```
 
-This package can also integrate seamlessly with [Livewire](https://livewire.laravel.com). Upon successful validation, the property specified inside of `wire:model` will be updated with the Turnstile token.
+### Livewire support
+
+This package can also integrate seamlessly with [Livewire](https://livewire.laravel.com).
+
+You can use `wire:model` to bind the Turnstile response to a Livewire property directly.
 
 ```blade
 <x-turnstile wire:model="yourModel" />
 ```
 
-### Multiple widgets with Livewire
+#### Multiple widgets with Livewire
 
-If you're using Livewire and need to have multiple widgets on the page, each widget requires a unique ID.
+If you're using Livewire and need to have multiple widgets on the same page, each widget requires a unique ID.
 
 ```blade
 <x-turnstile id="my_widget" wire:model="captcha" />
 ```
 
-The `id` property must match this RegEx: `/^[a-zA-Z_][a-zA-Z0-9_]*$/`. IDs that do not match the RegEx will trigger an exception.
+The `id` property must match this RegEx: `/^[a-zA-Z_][a-zA-Z0-9_-]*$/`. IDs that do not match the RegEx will trigger an exception.
 
 ## Testing
 
