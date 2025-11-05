@@ -122,6 +122,26 @@ If you're using Livewire and need to have multiple widgets on the same page, eac
 
 The `id` property must match this RegEx: `/^[a-zA-Z_][a-zA-Z0-9_-]*$/`. IDs that do not match the RegEx will trigger an exception.
 
+### Writing tests
+
+If you wish to write tests for your application that uses Turnstile, you can use the `Turnstile` facade to fake responses.
+
+```php
+use RyanChandler\LaravelCloudflareTurnstile\Facades\Turnstile;
+
+Turnstile::fake(): // Force a successful response.
+Turnstile::fake()->fail(); // Force a failed response.
+Turnstile::fake()->expired(); // Force an expired token response.
+```
+
+Instead of hardcoding the submitted Turnstile token, you can use the `Turnstile::dummy()` method to generate a dummy token.
+
+```php
+post('/my-form', [
+    'cf-turnstile-response' => Turnstile::dummy(),
+])
+```
+
 ## Testing
 
 ```bash
