@@ -102,7 +102,7 @@ You can customize the widget by passing attributes to the `<x-turnstile />` comp
 </form>
 ```
 
-### Livewire support
+### Livewire support
 
 This package can also integrate seamlessly with [Livewire](https://livewire.laravel.com).
 
