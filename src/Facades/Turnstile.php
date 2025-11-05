@@ -8,6 +8,7 @@ use RyanChandler\LaravelCloudflareTurnstile\Testing\FakeClient;
 
 /**
  * @method static string dummy()
+ * @method static \RyanChandler\LaravelCloudflareTurnstile\Responses\SiteverifyResponse siteverify(string $response)
  */
 class Turnstile extends Facade
 {
