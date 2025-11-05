@@ -2,6 +2,16 @@
 
 All notable changes to `laravel-cloudflare-turnstile` will be documented in this file.
 
+## v3.0.0 - 2025-11-05
+
+### What's Changed
+
+This is a new major version of this package. All changes required to upgrade have been documented in the [UPGRADE](https://github.com/ryangjchandler/laravel-cloudflare-turnstile/blob/main/UPGRADE.md) document.
+
+> If anything is missing from this document, please open an issue and let us know so we can update it!
+
+**Full Changelog**: https://github.com/ryangjchandler/laravel-cloudflare-turnstile/compare/v2.1.0...v3.0.0
+
 ## v2.1.0 - 2025-10-29
 
 ### What's Changed
