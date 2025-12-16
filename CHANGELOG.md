@@ -2,6 +2,18 @@
 
 All notable changes to `laravel-cloudflare-turnstile` will be documented in this file.
 
+## v3.0.1 - 2025-12-16
+
+### What's Changed
+
+* Fix copy by @brunogaspar in https://github.com/ryangjchandler/laravel-cloudflare-turnstile/pull/58
+
+### New Contributors
+
+* @brunogaspar made their first contribution in https://github.com/ryangjchandler/laravel-cloudflare-turnstile/pull/58
+
+**Full Changelog**: https://github.com/ryangjchandler/laravel-cloudflare-turnstile/compare/v3.0.0...v3.0.1
+
 ## v3.0.0 - 2025-11-05
 
 ### What's Changed
