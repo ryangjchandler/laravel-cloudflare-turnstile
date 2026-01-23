@@ -2,6 +2,18 @@
 
 All notable changes to `laravel-cloudflare-turnstile` will be documented in this file.
 
+## v3.0.2 - 2026-01-23
+
+### What's Changed
+
+* Delete .stubs.php by @aguingand in https://github.com/ryangjchandler/laravel-cloudflare-turnstile/pull/61
+
+### New Contributors
+
+* @aguingand made their first contribution in https://github.com/ryangjchandler/laravel-cloudflare-turnstile/pull/61
+
+**Full Changelog**: https://github.com/ryangjchandler/laravel-cloudflare-turnstile/compare/v3.0.1...v3.0.2
+
 ## v3.0.1 - 2025-12-16
 
 ### What's Changed
