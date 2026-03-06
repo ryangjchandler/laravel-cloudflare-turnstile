@@ -82,7 +82,7 @@ public function submit(Request $request)
 
 You can customize the widget by passing attributes to the `<x-turnstile />` component.
 
-> To learn more about these parameters, refer to [the offical documentation](https://developers.cloudflare.com/turnstile/get-started/client-side-rendering/#configurations).
+> To learn more about these parameters, refer to [the offical documentation](https://developers.cloudflare.com/turnstile/get-started/client-side-rendering/#configuration-options).
 
 ```blade
 <form action="/" method="POST">
