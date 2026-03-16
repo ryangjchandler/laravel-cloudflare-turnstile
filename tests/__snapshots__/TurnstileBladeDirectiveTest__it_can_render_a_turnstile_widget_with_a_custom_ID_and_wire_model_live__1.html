@@ -1,10 +1,10 @@
 <html><body>
-<div data-sitekey="1x00000000000000000000AA" wire:ignore data-callback="custom_idCallback" data-expired-callback="custom_idExpiredCallback" data-timeout-callback="custom_idExpiredCallback" class="cf-turnstile"></div>
+<div data-sitekey="1x00000000000000000000AA" wire:ignore data-callback="custom_idCallback" data-expired-callback="custom_idExpiredCallback" data-timeout-callback="custom_idExpiredCallback" class="cf-turnstile" wire:model.live="captcha"></div>
 
     <script>
         document.addEventListener('livewire:initialized', () => {
             window.custom_idCallback = function (token) {
-                @this.set("captcha", token, false);
+                @this.set("captcha", token, true);
             }
 
             window.custom_idExpiredCallback = function () {

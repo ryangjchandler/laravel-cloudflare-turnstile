@@ -76,6 +76,12 @@ it('can render a turnstile widget with a custom ID and wire:model', function () 
     assertMatchesHtmlSnapshot(trim($html));
 });
 
+it('can render a turnstile widget with a custom ID and wire:model.live', function () {
+    $html = Blade::render('<x-turnstile id="custom_id" wire:model.live="captcha" />');
+
+    assertMatchesHtmlSnapshot(trim($html));
+});
+
 it('correctly validates invalid turnstile widget IDs', function () {
     expect(fn () => Blade::render('<x-turnstile id="invalid id" />'))
         ->toThrow(ViewException::class, 'The Turnstile ID [invalid id] must start with a letter or underscore, and can only contain alphanumeric or underscore characters.');
