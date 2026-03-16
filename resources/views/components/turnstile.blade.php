@@ -1,5 +1,6 @@
 @props([
     'id' => 'captcha',
+    'nonce' => null,
 ])
 
 @php
@@ -24,7 +25,7 @@ $model = $attributes->has('wire:model') ? $attributes->get('wire:model') : null;
 ></div>
 
 @if ($model)
-    <script>
+    <script @if($nonce) nonce="{{ $nonce }}" @endif>
         document.addEventListener('livewire:initialized', () => {
             window.{{ $id }}Callback = function (token) {
                 @this.set("{{ $model }}", token);
