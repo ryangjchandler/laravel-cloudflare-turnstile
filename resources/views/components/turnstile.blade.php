@@ -7,7 +7,8 @@ if (! preg_match('/^[a-zA-Z_][a-zA-Z0-9_]*$/', $id)) {
     throw new InvalidArgumentException("The Turnstile ID [{$id}] must start with a letter or underscore, and can only contain alphanumeric or underscore characters.");
 }
 
-$model = $attributes->has('wire:model') ? $attributes->get('wire:model') : null;
+$model = $attributes->whereStartsWith('wire:model')->first();
+$live = $attributes->has('wire:model.live');
 @endphp
 
 <div
@@ -27,7 +28,7 @@ $model = $attributes->has('wire:model') ? $attributes->get('wire:model') : null;
     <script>
         document.addEventListener('livewire:initialized', () => {
             window.{{ $id }}Callback = function (token) {
-                @this.set("{{ $model }}", token);
+                @this.set("{{ $model }}", token, {{ $live ? 'true' : 'false' }});
             }
 
             window.{{ $id }}ExpiredCallback = function () {
