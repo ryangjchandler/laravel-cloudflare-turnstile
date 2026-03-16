@@ -4,7 +4,7 @@
     <script>
         document.addEventListener('livewire:initialized', () => {
             window.captchaCallback = function (token) {
-                @this.set("captcha", token);
+                @this.set("captcha", token, false);
             }
 
             window.captchaExpiredCallback = function () {
