@@ -2,6 +2,22 @@
 
 All notable changes to `laravel-cloudflare-turnstile` will be documented in this file.
 
+## v3.0.3 - 2026-03-19
+
+### What's Changed
+
+* Fix changed anchor in documentation link by @q-- in https://github.com/ryangjchandler/laravel-cloudflare-turnstile/pull/62
+* Laravel 13.x Compatibility by @laravel-shift in https://github.com/ryangjchandler/laravel-cloudflare-turnstile/pull/63
+* Allow nonce attribute to turnstile component by @aguingand in https://github.com/ryangjchandler/laravel-cloudflare-turnstile/pull/64
+* chore(deps): bump dependabot/fetch-metadata from 1.6.0 to 2.5.0 by @dependabot[bot] in https://github.com/ryangjchandler/laravel-cloudflare-turnstile/pull/60
+* chore(deps): bump actions/checkout from 5 to 6 by @dependabot[bot] in https://github.com/ryangjchandler/laravel-cloudflare-turnstile/pull/59
+
+### New Contributors
+
+* @q-- made their first contribution in https://github.com/ryangjchandler/laravel-cloudflare-turnstile/pull/62
+
+**Full Changelog**: https://github.com/ryangjchandler/laravel-cloudflare-turnstile/compare/v3.0.2...v3.0.3
+
 ## v3.0.2 - 2026-01-23
 
 ### What's Changed
