@@ -79,7 +79,7 @@ Then drop the widget inside the form:
 
     <x-turnstile />
 
-    <button>Versturen</button>
+    <button>Submit</button>
 </form>
 ```
 
