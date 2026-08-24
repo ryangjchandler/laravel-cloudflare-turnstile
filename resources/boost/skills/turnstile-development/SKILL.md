@@ -167,7 +167,7 @@ cleared.
   through a fresh request instead of `wire:click="$set('sent', false)"`:
 
   ```blade
-  <a href="{{ route('contact') }}" class="btn">Nog een bericht sturen</a>
+  <a href="{{ route('contact') }}" class="btn">Send another message</a>
   ```
 
 ## Error messages
