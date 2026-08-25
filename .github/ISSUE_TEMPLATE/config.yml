@@ -10,5 +10,5 @@ contact_links:
     url: https://github.com/ryangjchandler/laravel-cloudflare-turnstile/security/policy
     about: Learn how to notify us for sensitive bugs
   - name: Report a bug
-    url: https://github.com/ryangjchandler/laravel-cloudflare-turnstile/issues/new
+    url: https://github.com/ryangjchandler/laravel-cloudflare-turnstile/issues/new?template=bug_report
     about: Report a reproducible bug

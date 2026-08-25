@@ -2,6 +2,12 @@
 
 All notable changes to `laravel-cloudflare-turnstile` will be documented in this file.
 
+## v3.0.4 - 2026-05-12
+
+### What's Changed
+
+* Fix conditional check for response status (Bug) by @matiasperrone in https://github.com/ryangjchandler/laravel-cloudflare-turnstile/pull/70
+
 ## v3.0.3 - 2026-03-19
 
 ### What's Changed
