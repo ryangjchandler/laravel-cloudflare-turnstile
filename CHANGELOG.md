@@ -2,6 +2,20 @@
 
 All notable changes to `laravel-cloudflare-turnstile` will be documented in this file.
 
+## v3.0.4 - 2026-09-14
+
+### What's Changed
+
+* Add SKILL.md for turnstile-development documentation by @barryvdh in https://github.com/ryangjchandler/laravel-cloudflare-turnstile/pull/74
+* Fix: Client::siteverify() never checks success field (always fails on valid tokens) by @uasports90 in https://github.com/ryangjchandler/laravel-cloudflare-turnstile/pull/73
+
+### New Contributors
+
+* @barryvdh made their first contribution in https://github.com/ryangjchandler/laravel-cloudflare-turnstile/pull/74
+* @uasports90 made their first contribution in https://github.com/ryangjchandler/laravel-cloudflare-turnstile/pull/73
+
+**Full Changelog**: https://github.com/ryangjchandler/laravel-cloudflare-turnstile/compare/v3.0.3...v3.0.4
+
 ## v3.0.3 - 2026-03-19
 
 ### What's Changed
